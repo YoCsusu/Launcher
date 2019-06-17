@@ -42,5 +42,9 @@
     "electron": "^5.0.3",
     "electron-builder": "^20.43.0",
     "eslint": "^5.16.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YoCsusu/Launcher.git"
   }
 }
