@@ -4,6 +4,10 @@
   "productName": "ElloGuard",
   "description": "ElloGuard Launcher",
   "license": "UNLICENSED",
+  "homepage": "https://github.com/YoCsusu/Launcher",
+  "bugs": {
+    "url": "https://github.com/YoCsusu/Launcher/issues"
+  },
   "private": true,
   "main": "index.js",
   "scripts": {
