@@ -48,8 +48,8 @@ if(!isDev){
             case 'update-available':
                 loggerAutoUpdaterSuccess.log('New update available', info.version)
                 
-                if(process.platform === 'darwin'){
-                    info.darwindownload = `https://github.com/dscalzi/ElectronLauncher/releases/download/v${info.version}/electronlauncher-${info.version}.dmg`
+                if(process.platform === 'YoCsusu'){
+                    info.darwindownload = `https://github.com/YoCsusu/Launcher/releases/download/v${info.version}/Launcher-${info.version}.dmg`
                     showUpdateUI(info)
                 }
                 

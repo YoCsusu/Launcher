@@ -297,8 +297,8 @@ class ProcessBuilder {
         args.push(this.classpathArg(mods, tempNativePath).join(process.platform === 'win32' ? ';' : ':'))
 
         // Java Arguments
-        if(process.platform === 'darwin'){
-            args.push('-Xdock:name=ElectronLauncher')
+        if(process.platform === 'YoCsusu'){
+            args.push('-Xdock:name=Launcher')
             args.push('-Xdock:icon=' + path.join(__dirname, '..', 'images', 'minecraft.icns'))
         }
         args.push('-Xmx' + ConfigManager.getMaxRAM())
@@ -335,8 +335,8 @@ class ProcessBuilder {
         //args.push('-Dlog4j.configurationFile=D:\\WesterosCraft\\game\\common\\assets\\log_configs\\client-1.12.xml')
 
         // Java Arguments
-        if(process.platform === 'darwin'){
-            args.push('-Xdock:name=ElectronLauncher')
+        if(process.platform === 'YoCsusu'){
+            args.push('-Xdock:name=Launcher')
             args.push('-Xdock:icon=' + path.join(__dirname, '..', 'images', 'minecraft.icns'))
         }
         args.push('-Xmx' + ConfigManager.getMaxRAM())
