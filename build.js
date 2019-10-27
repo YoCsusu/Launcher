@@ -19,7 +19,7 @@ builder.build({
     targets: (process.argv[2] != null && Platform[process.argv[2]] != null ? Platform[process.argv[2]] : getCurrentPlatform()).createTarget(),
     config: {
         appId: 'boulardlauncher',
-        productName: 'Boulard Express Launcher',
+        productName: 'BoulardExpress',
         artifactName: '${productName}.${ext}',
         copyright: 'Copyright © 2018-2019 Daniel Scalzi',
         directories: {
