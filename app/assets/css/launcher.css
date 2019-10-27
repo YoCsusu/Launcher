@@ -105,16 +105,13 @@ body, button {
 }
 
 /* Frame logo (windows only). */
-#frameImageDock {
-    width: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+#frameTitleDock {
+    padding: 0px 10px;
 }
-#frameImage {
-    height: 15px;
-    filter: grayscale(100%);
+#frameTitleText {
+    font-size: 14px;
+    font-family: 'Avenir Medium';
+    letter-spacing: 0.5px;
 }
 
 /* Windows frame button dock. */
@@ -275,11 +272,11 @@ body, button {
 */
 
 #welcomeImageSeal {
-    border-radius: 50%;
-    border: 2px solid #cad7e1;
+    /* border-radius: 50%;
+    border: 2px solid #cad7e1; */
     background: rgba(1, 2, 1, 0.5);
-    height: 125px;
-    width: 125px;
+    height: 256px;
+    /* width: 125px; */
     box-shadow: 0px 0px 10px 0px rgb(0, 0, 0);
     margin-bottom: 5%;
     margin-top: 10%;
@@ -488,11 +485,11 @@ body, button {
 
 /* Logo on login form. */
 #loginImageSeal {
-    border-radius: 50%;
-    border: 2px solid #cad7e1;
+    /* border-radius: 50%;
+    border: 2px solid #cad7e1; */
     background: rgba(1, 2, 1, 0.5);
     height: 125px;
-    width: 125px;
+    width: 100px;
     box-shadow: 0px 0px 10px 0px rgb(0, 0, 0);
     margin-bottom: 20px;
 }
@@ -2676,12 +2673,12 @@ input:checked + .toggleSwitchSlider:before {
 
 /* Logo image. */
 #image_seal {
-    height: 70px;
+    height: 160px;
     width: auto;
     position: relative;
-    border: 2px solid white;
+    /* border: 2px solid white;
     box-sizing: border-box;
-    border-radius: 50%;
+    border-radius: 50%; */
 }
 
 /* Logo container styles. */

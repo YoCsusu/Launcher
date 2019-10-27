@@ -187,30 +187,30 @@ class JavaGuard extends EventEmitter {
     //  * 
     //  * @returns {Promise.<OracleJREData>} Promise which resolved to an object containing the JRE download data.
     //  */
-    static _latestJREOracle(){
+    // static _latestJREOracle(){
 
-        const url = 'https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html'
-        const regex = /https:\/\/.+?(?=\/java)\/java\/jdk\/([0-9]+u[0-9]+)-(b[0-9]+)\/([a-f0-9]{32})?\/jre-\1/
+    //     const url = 'https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html'
+    //     const regex = /https:\/\/.+?(?=\/java)\/java\/jdk\/([0-9]+u[0-9]+)-(b[0-9]+)\/([a-f0-9]{32})?\/jre-\1/
     
-        return new Promise((resolve, reject) => {
-            request(url, (err, resp, body) => {
-                if(!err){
-                    const arr = body.match(regex)
-                    const verSplit = arr[1].split('u')
-                    resolve({
-                        uri: arr[0],
-                        version: {
-                            major: verSplit[0],
-                            update: verSplit[1],
-                            build: arr[2]
-                        }
-                    })
-                } else {
-                    resolve(null)
-                }
-            })
-        })
-    }
+    //     return new Promise((resolve, reject) => {
+    //         request(url, (err, resp, body) => {
+    //             if(!err){
+    //                 const arr = body.match(regex)
+    //                 const verSplit = arr[1].split('u')
+    //                 resolve({
+    //                     uri: arr[0],
+    //                     version: {
+    //                         major: verSplit[0],
+    //                         update: verSplit[1],
+    //                         build: arr[2]
+    //                     }
+    //                 })
+    //             } else {
+    //                 resolve(null)
+    //             }
+    //         })
+    //     })
+    // }
 
     /**
      * @typedef OpenJDKData
@@ -226,26 +226,26 @@ class JavaGuard extends EventEmitter {
      * 
      * @returns {Promise.<OpenJDKData>} Promise which resolved to an object containing the JRE download data.
      */
-    // static _latestOpenJDK(major = '8'){
+    static _latestOpenJDK(major = '8'){
 
-    //     const sanitizedOS = process.platform === 'win32' ? 'windows' : (process.platform === 'darwin' ? 'mac' : process.platform)
+        const sanitizedOS = process.platform === 'win32' ? 'windows' : (process.platform === 'darwin' ? 'mac' : process.platform)
 
-    //     const url = `https://api.adoptopenjdk.net/v2/latestAssets/nightly/openjdk${major}?os=${sanitizedOS}&arch=x64&heap_size=normal&openjdk_impl=hotspot&type=jre`
+        const url = `https://api.adoptopenjdk.net/v2/latestAssets/nightly/openjdk${major}?os=${sanitizedOS}&arch=x64&heap_size=normal&openjdk_impl=hotspot&type=jre`
         
-    //     return new Promise((resolve, reject) => {
-    //         request({url, json: true}, (err, resp, body) => {
-    //             if(!err && body.length > 0){
-    //                 resolve({
-    //                     uri: body[0].binary_link,
-    //                     size: body[0].binary_size,
-    //                     name: body[0].binary_name
-    //                 })
-    //             } else {
-    //                 resolve(null)
-    //             }
-    //         })
-    //     })
-    // }
+        return new Promise((resolve, reject) => {
+            request({url, json: true}, (err, resp, body) => {
+                if(!err && body.length > 0){
+                    resolve({
+                        uri: body[0].binary_link,
+                        size: body[0].binary_size,
+                        name: body[0].binary_name
+                    })
+                } else {
+                    resolve(null)
+                }
+            })
+        })
+    }
 
     /**
      * Returns the path of the OS-specific executable for the given Java
@@ -1487,125 +1487,63 @@ class AssetGuard extends EventEmitter {
     // Java (Category=''') Validation (download) Functions
     // #region
 
-    // _enqueueOpenJDK(dataDir){
-    //     return new Promise((resolve, reject) => {
-    //         JavaGuard._latestOpenJDK('8').then(verData => {
-    //             if(verData != null){
-
-    //                 dataDir = path.join(dataDir, 'runtime', 'x64')
-    //                 const fDir = path.join(dataDir, verData.name)
-    //                 const jre = new Asset(verData.name, null, verData.size, verData.uri, fDir)
-    //                 this.java = new DLTracker([jre], jre.size, (a, self) => {
-    //                     if(verData.name.endsWith('zip')){
-
-    //                         const zip = new AdmZip(a.to)
-    //                         const pos = path.join(dataDir, zip.getEntries()[0].entryName)
-    //                         zip.extractAllToAsync(dataDir, true, (err) => {
-    //                             if(err){
-    //                                 console.log(err)
-    //                                 self.emit('complete', 'java', JavaGuard.javaExecFromRoot(pos))
-    //                             } else {
-    //                                 fs.unlink(a.to, err => {
-    //                                     if(err){
-    //                                         console.log(err)
-    //                                     }
-    //                                     self.emit('complete', 'java', JavaGuard.javaExecFromRoot(pos))
-    //                                 })
-    //                             }
-    //                         })
-
-    //                     } else {
-    //                         // Tar.gz
-    //                         let h = null
-    //                         fs.createReadStream(a.to)
-    //                             .on('error', err => console.log(err))
-    //                             .pipe(zlib.createGunzip())
-    //                             .on('error', err => console.log(err))
-    //                             .pipe(tar.extract(dataDir, {
-    //                                 map: (header) => {
-    //                                     if(h == null){
-    //                                         h = header.name
-    //                                     }
-    //                                 }
-    //                             }))
-    //                             .on('error', err => console.log(err))
-    //                             .on('finish', () => {
-    //                                 fs.unlink(a.to, err => {
-    //                                     if(err){
-    //                                         console.log(err)
-    //                                     }
-    //                                     if(h.indexOf('/') > -1){
-    //                                         h = h.substring(0, h.indexOf('/'))
-    //                                     }
-    //                                     const pos = path.join(dataDir, h)
-    //                                     self.emit('complete', 'java', JavaGuard.javaExecFromRoot(pos))
-    //                                 })
-    //                             })
-    //                     }
-    //                 })
-    //                 resolve(true)
-
-    //             } else {
-    //                 resolve(false)
-    //             }
-    //         })
-    //     })
-
-    // }
-
-    _enqueueOracleJRE(dataDir){
+    _enqueueOpenJDK(dataDir){
         return new Promise((resolve, reject) => {
-            JavaGuard._latestJREOracle().then(verData => {
+            JavaGuard._latestOpenJDK('8').then(verData => {
                 if(verData != null){
 
-                    const combined = verData.uri + PLATFORM_MAP[process.platform]
-        
-                    const opts = {
-                        url: combined,
-                        headers: {
-                            'Cookie': 'oraclelicense=accept-securebackup-cookie'
-                        }
-                    }
-        
-                    request.head(opts, (err, resp, body) => {
-                        if(err){
-                            resolve(false)
-                        } else {
-                            dataDir = path.join(dataDir, 'runtime', 'x64')
-                            const name = combined.substring(combined.lastIndexOf('/')+1)
-                            const fDir = path.join(dataDir, name)
-                            const jre = new Asset(name, null, parseInt(resp.headers['content-length']), opts, fDir)
-                            this.java = new DLTracker([jre], jre.size, (a, self) => {
-                                let h = null
-                                fs.createReadStream(a.to)
-                                    .on('error', err => console.log(err))
-                                    .pipe(zlib.createGunzip())
-                                    .on('error', err => console.log(err))
-                                    .pipe(tar.extract(dataDir, {
-                                        map: (header) => {
-                                            if(h == null){
-                                                h = header.name
-                                            }
+                    dataDir = path.join(dataDir, 'runtime', 'x64')
+                    const fDir = path.join(dataDir, verData.name)
+                    const jre = new Asset(verData.name, null, verData.size, verData.uri, fDir)
+                    this.java = new DLTracker([jre], jre.size, (a, self) => {
+                        if(verData.name.endsWith('zip')){
+
+                            const zip = new AdmZip(a.to)
+                            const pos = path.join(dataDir, zip.getEntries()[0].entryName)
+                            zip.extractAllToAsync(dataDir, true, (err) => {
+                                if(err){
+                                    console.log(err)
+                                    self.emit('complete', 'java', JavaGuard.javaExecFromRoot(pos))
+                                } else {
+                                    fs.unlink(a.to, err => {
+                                        if(err){
+                                            console.log(err)
                                         }
-                                    }))
-                                    .on('error', err => console.log(err))
-                                    .on('finish', () => {
-                                        fs.unlink(a.to, err => {
-                                            if(err){
-                                                console.log(err)
-                                            }
-                                            if(h.indexOf('/') > -1){
-                                                h = h.substring(0, h.indexOf('/'))
-                                            }
-                                            const pos = path.join(dataDir, h)
-                                            self.emit('complete', 'java', JavaGuard.javaExecFromRoot(pos))
-                                        })
+                                        self.emit('complete', 'java', JavaGuard.javaExecFromRoot(pos))
                                     })
-                                
+                                }
                             })
-                            resolve(true)
+
+                        } else {
+                            // Tar.gz
+                            let h = null
+                            fs.createReadStream(a.to)
+                                .on('error', err => console.log(err))
+                                .pipe(zlib.createGunzip())
+                                .on('error', err => console.log(err))
+                                .pipe(tar.extract(dataDir, {
+                                    map: (header) => {
+                                        if(h == null){
+                                            h = header.name
+                                        }
+                                    }
+                                }))
+                                .on('error', err => console.log(err))
+                                .on('finish', () => {
+                                    fs.unlink(a.to, err => {
+                                        if(err){
+                                            console.log(err)
+                                        }
+                                        if(h.indexOf('/') > -1){
+                                            h = h.substring(0, h.indexOf('/'))
+                                        }
+                                        const pos = path.join(dataDir, h)
+                                        self.emit('complete', 'java', JavaGuard.javaExecFromRoot(pos))
+                                    })
+                                })
                         }
                     })
+                    resolve(true)
 
                 } else {
                     resolve(false)
@@ -1615,42 +1553,104 @@ class AssetGuard extends EventEmitter {
 
     }
 
-    _enqueueMojangJRE(dir){
-        return new Promise((resolve, reject) => {
-            // Mojang does not host the JRE for linux.
-            if(process.platform === 'linux'){
-                resolve(false)
-            }
-            AssetGuard.loadMojangLauncherData().then(data => {
-                if(data != null) {
+    // _enqueueOracleJRE(dataDir){
+    //     return new Promise((resolve, reject) => {
+    //         JavaGuard._latestJREOracle().then(verData => {
+    //             if(verData != null){
 
-                    try {
-                        const mJRE = data[Library.mojangFriendlyOS()]['64'].jre
-                        const url = mJRE.url
+    //                 const combined = verData.uri + PLATFORM_MAP[process.platform]
+        
+    //                 const opts = {
+    //                     url: combined,
+    //                     headers: {
+    //                         'Cookie': 'oraclelicense=accept-securebackup-cookie'
+    //                     }
+    //                 }
+        
+    //                 request.head(opts, (err, resp, body) => {
+    //                     if(err){
+    //                         resolve(false)
+    //                     } else {
+    //                         dataDir = path.join(dataDir, 'runtime', 'x64')
+    //                         const name = combined.substring(combined.lastIndexOf('/')+1)
+    //                         const fDir = path.join(dataDir, name)
+    //                         const jre = new Asset(name, null, parseInt(resp.headers['content-length']), opts, fDir)
+    //                         this.java = new DLTracker([jre], jre.size, (a, self) => {
+    //                             let h = null
+    //                             fs.createReadStream(a.to)
+    //                                 .on('error', err => console.log(err))
+    //                                 .pipe(zlib.createGunzip())
+    //                                 .on('error', err => console.log(err))
+    //                                 .pipe(tar.extract(dataDir, {
+    //                                     map: (header) => {
+    //                                         if(h == null){
+    //                                             h = header.name
+    //                                         }
+    //                                     }
+    //                                 }))
+    //                                 .on('error', err => console.log(err))
+    //                                 .on('finish', () => {
+    //                                     fs.unlink(a.to, err => {
+    //                                         if(err){
+    //                                             console.log(err)
+    //                                         }
+    //                                         if(h.indexOf('/') > -1){
+    //                                             h = h.substring(0, h.indexOf('/'))
+    //                                         }
+    //                                         const pos = path.join(dataDir, h)
+    //                                         self.emit('complete', 'java', JavaGuard.javaExecFromRoot(pos))
+    //                                     })
+    //                                 })
+                                
+    //                         })
+    //                         resolve(true)
+    //                     }
+    //                 })
 
-                        request.head(url, (err, resp, body) => {
-                            if(err){
-                                resolve(false)
-                            } else {
-                                const name = url.substring(url.lastIndexOf('/')+1)
-                                const fDir = path.join(dir, name)
-                                const jre = new Asset('jre' + mJRE.version, mJRE.sha1, resp.headers['content-length'], url, fDir)
-                                this.java = new DLTracker([jre], jre.size, a => {
-                                    fs.readFile(a.to, (err, data) => {
-                                        // Data buffer needs to be decompressed from lzma,
-                                        // not really possible using node.js
-                                    })
-                                })
-                            }
-                        })
-                    } catch (err){
-                        resolve(false)
-                    }
+    //             } else {
+    //                 resolve(false)
+    //             }
+    //         })
+    //     })
 
-                }
-            })
-        })
-    }
+    // }
+
+    // _enqueueMojangJRE(dir){
+    //     return new Promise((resolve, reject) => {
+    //         // Mojang does not host the JRE for linux.
+    //         if(process.platform === 'linux'){
+    //             resolve(false)
+    //         }
+    //         AssetGuard.loadMojangLauncherData().then(data => {
+    //             if(data != null) {
+
+    //                 try {
+    //                     const mJRE = data[Library.mojangFriendlyOS()]['64'].jre
+    //                     const url = mJRE.url
+
+    //                     request.head(url, (err, resp, body) => {
+    //                         if(err){
+    //                             resolve(false)
+    //                         } else {
+    //                             const name = url.substring(url.lastIndexOf('/')+1)
+    //                             const fDir = path.join(dir, name)
+    //                             const jre = new Asset('jre' + mJRE.version, mJRE.sha1, resp.headers['content-length'], url, fDir)
+    //                             this.java = new DLTracker([jre], jre.size, a => {
+    //                                 fs.readFile(a.to, (err, data) => {
+    //                                     // Data buffer needs to be decompressed from lzma,
+    //                                     // not really possible using node.js
+    //                                 })
+    //                             })
+    //                         }
+    //                     })
+    //                 } catch (err){
+    //                     resolve(false)
+    //                 }
+
+    //             }
+    //         })
+    //     })
+    // }
 
 
     // #endregion
