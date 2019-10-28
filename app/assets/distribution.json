@@ -14,7 +14,7 @@
       "id": "Nagaserya",
       "name": "Nagaserya Production Server",
       "description": "Nagaserya server Minecraft.",
-      "icon": "https://78.215.57.236/Launcher/images/favicon.png",
+      "icon": "http://boulard.azurewebsites.net/Launcher/files/images/favicon.png",
       "version": "3.9.4",
       "address": "149.202.122.133:25565",
       "minecraftVersion": "1.12.2",

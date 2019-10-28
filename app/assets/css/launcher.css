@@ -2954,6 +2954,24 @@ input:checked + .toggleSwitchSlider:before {
     transition-delay:0s;
 }
 
+/* shopping icon colors. */
+#twitchSVG:hover,
+#twitchSVG:focus #twitchSVG {
+    fill: #1da1f2;
+}
+#twitchSVG:active {
+    fill: #1b8dd4;
+}
+
+/* shopping icon colors. */
+#shoppingSVG:hover,
+#shoppingSVG:focus #shoppingSVG {
+    fill: #1da1f2;
+}
+#shoppingSVG:active {
+    fill: #1b8dd4;
+}
+
 /* Twitter icon colors. */
 #twitterSVG:hover,
 #twitterURL:focus #twitterSVG {
