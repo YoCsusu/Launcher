@@ -1,5 +1,5 @@
 {
-  "version": "0.0.1",
+  "version": "1.0.0",
   "discord": {
     "clientId": "201696368660578304",
     "smallImageText": "ElloGuard",
@@ -674,6 +674,72 @@
                 "path": "mods/CustomMobSpawner-3.11.4.jar",
                 "MD5": "98108e4da7480ca9f34cd4f69b87fbce",
                 "url": "https://boulard.azurewebsites.net/mods/CustomMobSpawner-3.11.4.jar"
+              }
+            },
+			{
+              "id": "OptiFine_1.12.2_HD_U_F4.jar",
+              "name": "OptiFine_1.12.2_HD_U_F4.jar",
+              "type": "file",
+              "artifact": {
+                "size": 2598165,
+                "path": "mods/OptiFine_1.12.2_HD_U_F4.jar",
+                "MD5": "ef171aa1bd8e1ac2f2c6c9843e424a45",
+                "url": "https://boulard.azurewebsites.net/mods/OptiFine_1.12.2_HD_U_F4.jar"
+              }
+            },
+			{
+              "id": "SEUS-Renewed-1.0.0.zip",
+              "name": "SEUS-Renewed-1.0.0.zip",
+              "type": "file",
+              "artifact": {
+                "size": 7062491,
+                "path": "shaderpacks/SEUS-Renewed-1.0.0.zip",
+                "MD5": "e68cc9f8ffc8fad66583b9b2cc05356f",
+                "url": "https://boulard.azurewebsites.net/Launcher/files/shaderpacks/SEUS-Renewed-1.0.0.zip"
+              }
+            },
+			{
+              "id": "CandyCraftTSR.zip",
+              "name": "CandyCraftTSR.zip",
+              "type": "file",
+              "artifact": {
+                "size": 6370269,
+                "path": "resourcepacks/CandyCraftTSR.zip",
+                "MD5": "d126b1f4a07ea14ddc5cb2c11413cbd0",
+                "url": "https://boulard.azurewebsites.net/Launcher/files/resourcepacks/CandyCraftTSR.zip"
+              }
+            },
+			{
+              "id": "FlowsHD(1.12)64x.zip",
+              "name": "FlowsHD(1.12)64x.zip",
+              "type": "file",
+              "artifact": {
+                "size": 32086682,
+                "path": "resourcepacks/FlowsHD(1.12)64x.zip",
+                "MD5": "aa38f01c33faea416a63a530db5145cf",
+                "url": "https://boulard.azurewebsites.net/Launcher/files/resourcepacks/FlowsHD(1.12)64x.zip"
+              }
+            },
+			{
+              "id": "C-tetra_1.12.zip",
+              "name": "C-tetra_1.12.zip",
+              "type": "file",
+              "artifact": {
+                "size": 2195235,
+                "path": "resourcepacks/C-tetra_1.12.zip",
+                "MD5": "2e147ea6843447dae4ef200a140b8594",
+                "url": "https://boulard.azurewebsites.net/Launcher/files/resourcepacks/C-tetra_1.12.zip"
+              }
+            },
+			{
+              "id": "ACME_Pack_64x_MC112.zip",
+              "name": "ACME_Pack_64x_MC112.zip",
+              "type": "file",
+              "artifact": {
+                "size": 24417872,
+                "path": "resourcepacks/ACME_Pack_64x_MC112.zip",
+                "MD5": "1de28e6a77a3fd0044acc1368bd5531a",
+                "url": "https://boulard.azurewebsites.net/Launcher/files/resourcepacks/ACME_Pack_64x_MC112.zip"
               }
             },
             {
