@@ -688,14 +688,14 @@
               }
             },
 			{
-              "id": "SEUS-Renewed-1.0.0.zip",
-              "name": "SEUS-Renewed-1.0.0.zip",
+              "id": "BSL+v7.1.03.2.zip",
+              "name": "BSL+v7.1.03.2.zip",
               "type": "file",
               "artifact": {
-                "size": 7062491,
-                "path": "shaderpacks/SEUS-Renewed-1.0.0.zip",
-                "MD5": "e68cc9f8ffc8fad66583b9b2cc05356f",
-                "url": "https://boulard.azurewebsites.net/Launcher/files/shaderpacks/SEUS-Renewed-1.0.0.zip"
+                "size": 498072,
+                "path": "shaderpacks/BSL+v7.1.03.2.zip",
+                "MD5": "c683212d310fb5ca54b9a77898ec6a3c",
+                "url": "https://boulard.azurewebsites.net/Launcher/files/shaderpacks/BSL+v7.1.03.2.zip"
               }
             },
 			{
