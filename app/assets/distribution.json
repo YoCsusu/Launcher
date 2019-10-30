@@ -676,6 +676,17 @@
                 "url": "https://boulard.azurewebsites.net/mods/CustomMobSpawner-3.11.4.jar"
               }
             },
+            {
+              "id": "CookingForBlockheads_1.12.2-6.4.71.jar",
+              "name": "CookingForBlockheads_1.12.2-6.4.71.jar",
+              "type": "file",
+              "artifact": {
+                "size": 591592,
+                "path": "mods/CookingForBlockheads_1.12.2-6.4.71.jar",
+                "MD5": "995ffd1af0f16bdae20ab62b46fcd492",
+                "url": "https://boulard.azurewebsites.net/mods/CookingForBlockheads_1.12.2-6.4.71.jar"
+              }
+            },
 			{
               "id": "OptiFine_1.12.2_HD_U_F4.jar",
               "name": "OptiFine_1.12.2_HD_U_F4.jar",
