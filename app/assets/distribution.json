@@ -687,6 +687,28 @@
                 "url": "https://boulard.azurewebsites.net/mods/CookingForBlockheads_1.12.2-6.4.71.jar"
               }
             },
+            {
+              "id": "gravestone-1.10.3.jar",
+              "name": "gravestone-1.10.3.jar",
+              "type": "file",
+              "artifact": {
+                "size": 129433,
+                "path": "mods/gravestone-1.10.3.jar",
+                "MD5": "44c8e473abb93250df0f51fc0b050041",
+                "url": "https://boulard.azurewebsites.net/mods/gravestone-1.10.3.jar"
+              }
+            },
+            {
+              "id": "extrautils2-1.12-1.9.9.jar",
+              "name": "extrautils2-1.12-1.9.9.jar",
+              "type": "file",
+              "artifact": {
+                "size": 3226408,
+                "path": "mods/extrautils2-1.12-1.9.9.jar",
+                "MD5": "1ea591619e6d5204bf077214868772ef",
+                "url": "https://boulard.azurewebsites.net/mods/extrautils2-1.12-1.9.9.jar"
+              }
+            },
 			{
               "id": "OptiFine_1.12.2_HD_U_F4.jar",
               "name": "OptiFine_1.12.2_HD_U_F4.jar",
