@@ -709,6 +709,17 @@
                 "url": "https://boulard.azurewebsites.net/mods/extrautils2-1.12-1.9.9.jar"
               }
             },
+            {
+              "id": "rangedpumps-0.5.jar",
+              "name": "rangedpumps-0.5.jar",
+              "type": "file",
+              "artifact": {
+                "size": 21519,
+                "path": "mods/rangedpumps-0.5.jar",
+                "MD5": "29512482818fe06791e9af63c611e4b2",
+                "url": "https://boulard.azurewebsites.net/mods/rangedpumps-0.5.jar"
+              }
+            },
 			{
               "id": "OptiFine_1.12.2_HD_U_F4.jar",
               "name": "OptiFine_1.12.2_HD_U_F4.jar",
