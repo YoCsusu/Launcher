@@ -720,6 +720,17 @@
                 "url": "https://boulard.azurewebsites.net/mods/rangedpumps-0.5.jar"
               }
             },
+            {
+              "id": "twilightforest-1.12.2-3.10.1013-universal.jar",
+              "name": "twilightforest-1.12.2-3.10.1013-universal.jar",
+              "type": "file",
+              "artifact": {
+                "size": 28721750,
+                "path": "mods/twilightforest-1.12.2-3.10.1013-universal.jar",
+                "MD5": "49ba19277c2bfbcf65aa93173292812b",
+                "url": "https://boulard.azurewebsites.net/mods/twilightforest-1.12.2-3.10.1013-universal.jar"
+              }
+            },
 			{
               "id": "OptiFine_1.12.2_HD_U_F4.jar",
               "name": "OptiFine_1.12.2_HD_U_F4.jar",
